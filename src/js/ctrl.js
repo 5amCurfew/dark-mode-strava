@@ -42,6 +42,7 @@ const activityControl = async () => {
       console.log(state);
       viewActivity.clear();
       viewActivity.viewActivity(state.Activity);
+      viewActivity.viewRouteMap(state.Activity);
     } catch (error) {
       console.log(error);
       console.log('*** Activity API call Error ***');

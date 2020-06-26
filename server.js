@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+const mapboxgl = require('mapbox-gl');
 
 const settings = {
   client_id: '49531',
   client_secret: 'cbadaecd9d626826962ddde695f7067f52eb2da2',
+  mapboxToken: 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg',
 };
+
+mapboxgl.accessToken = settings.mapboxToken;
 
 app.use(express.static(`${__dirname}/src`));
 app.use(express.static('js'));

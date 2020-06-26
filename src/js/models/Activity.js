@@ -20,6 +20,4 @@ export default class Activity {
       console.log(error);
     }
   }
-
-  async getActivityMap() {}
 }
