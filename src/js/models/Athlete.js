@@ -17,7 +17,7 @@ export default class Athlete {
         console.log(response);
         let details = {
           name: response.data.firstname,
-          profile: response.data.profile_medium,
+          profile: response.data.profile,
         };
         return details;
       });
