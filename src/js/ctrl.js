@@ -39,16 +39,17 @@ const activityControl = async () => {
     state.Activity = new Activity(id);
     try {
       await state.Activity.getActivityDetails(state.Athlete.__accessToken__);
+      await state.Activity.getRoute();
       console.log(state);
       viewActivity.clear();
-      viewActivity.viewActivity(state.Activity);
-      viewActivity.viewRouteMap(state.Activity);
+      await viewActivity.viewActivity(state.Activity);
+      await viewActivity.viewRouteMap(state.Activity);
     } catch (error) {
       console.log(error);
       console.log('*** Activity API call Error ***');
     }
   } else {
-    console.log('__activity__ error');
+    console.log('Please select an activity...');
   }
 };
 

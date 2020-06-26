@@ -1,3 +1,5 @@
+import * as polyline from '../models/polyline.js';
+
 export default class Activity {
   constructor(id) {
     this.id = id;
@@ -19,5 +21,19 @@ export default class Activity {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async getRoute() {
+    this.route = {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: polyline.decode(this.details.map.polyline),
+        },
+      },
+    };
   }
 }

@@ -14,7 +14,6 @@ export default class Athlete {
         url: `https://www.strava.com/api/v3/athlete?access_token=${this.__accessToken__}`,
         headers: { accept: 'application/json' },
       }).then((response) => {
-        console.log(response);
         let details = {
           name: response.data.firstname,
           profile: response.data.profile,
