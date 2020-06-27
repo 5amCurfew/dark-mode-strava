@@ -38,7 +38,6 @@ body {
   margin: 1vw auto;
   background-color: #1a1a1d;
   border-radius: 6px;
-  overflow: hidden;
   display: grid;
   grid-template-rows: 20rem minmax(100rem, auto);
   grid-template-columns: 1.1fr 2fr;
@@ -167,23 +166,53 @@ body {
 }
 
 .activity {
+  display: grid;
   background-color: #1a1a1d;
-  border: 1px solid #fff;
+  border: 1px dashed #fff;
   margin-left: 2rem;
-  width: 90%;
+  width: 55%;
+  position: fixed;
+  top: 250px;
 }
 .activity__details {
-  display: flex;
+  display: grid;
   align-items: center;
-  padding: 3rem 3rem 3rem 3rem;
+  padding: 2rem 2rem 2rem 2rem;
   background-color: #1a1a1d;
   color: #fff;
 }
-.activity__info {
+.activity__info-title {
+  color: tomato;
+  padding: 1rem;
   font-size: 1.5rem;
-  align-items: left;
+  text-align: center;
+}
+.activity__info-text {
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+}
+.activity__headlines {
+  display: inline-grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  font-size: 1.5rem;
+  align-items: center;
+}
+.activity__headline {
+  display: inline-grid;
+  grid-template-rows: 40% 60%;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
+.mapboxgl-map {
+  display: inline-grid;
+  padding: 2rem;
+  width: 100%;
+  height: 30rem;
+}
 .selected {
   border: 1px solid;
   border-color: tomato;

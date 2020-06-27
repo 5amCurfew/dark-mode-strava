@@ -7,13 +7,26 @@ export const viewActivity = (activity) => {
 
   const markup = `
     <div class="activity__details">
-        <div class="activity__info">
+
+        <div class="activity__headlines">
+          <div class="activity__headline">
+            <p class="activity__info-title">Distance</p>
             <p class="activity__info-text">${Math.round(activity.details.distance / 1000)}km</p>
-            <p class="activity__info-text">${activity.details.gear.name}</p>
-            <p class="activity__info-text">${activity.details.description}</p>
+          </div>
+          <div class="activity__headline">
+            <p class="activity__info-title">Avg. Speed</p>
             <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
-            <div id="routeMap" style='width: 600px; height: 450px;'></div>
+          </div>
+          <div class="activity__headline">
+            <p class="activity__info-title">Avg. Speed</p>
+            <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
+          </div>
+          <div class="activity__headline">
+            <p class="activity__info-title">Avg. Speed</p>
+            <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
+          </div>
         </div>
+        <div id="routeMap" class="routeMap"></div>
     </div>`;
 
   document.querySelector('.activity').insertAdjacentHTML('beforeend', markup);
@@ -37,8 +50,18 @@ export const viewRouteMap = (activity) => {
     container: 'routeMap',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [map_cx, map_cy], // starting position [lng, lat]
-    zoom: 10,
   });
+
+  map.fitBounds([
+    [
+      Math.min(...activity.route.data.geometry.coordinates.map((coord) => coord[0])) * 0.9995,
+      Math.min(...activity.route.data.geometry.coordinates.map((coord) => coord[1])) * 0.9995,
+    ],
+    [
+      Math.max(...activity.route.data.geometry.coordinates.map((coord) => coord[0])) * 1.0005,
+      Math.max(...activity.route.data.geometry.coordinates.map((coord) => coord[1])) * 1.0005,
+    ],
+  ]);
 
   map.on('load', function () {
     map.addSource('route', activity.route);
@@ -53,6 +76,27 @@ export const viewRouteMap = (activity) => {
       paint: {
         'line-color': 'tomato',
         'line-width': 3,
+      },
+    });
+    // add source and layer for contours
+    map.addSource('contours', {
+      type: 'vector',
+      url: 'mapbox://mapbox.mapbox-terrain-v2',
+    });
+    map.addLayer({
+      id: 'contours',
+      type: 'line',
+      source: 'contours',
+      'source-layer': 'contour',
+      layout: {
+        // make layer visible by default
+        visibility: 'visible',
+        'line-join': 'round',
+        'line-cap': 'round',
+      },
+      paint: {
+        'line-color': '#fff',
+        'line-width': 2,
       },
     });
   });
