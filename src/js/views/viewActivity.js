@@ -36,20 +36,9 @@ export const viewActivity = (activity) => {
 export const viewRouteMap = (activity) => {
   mapboxgl.accessToken = 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg';
 
-  let map_cx =
-    (Math.max(...activity.route.data.geometry.coordinates.map((coord) => coord[0])) +
-      Math.min(...activity.route.data.geometry.coordinates.map((coord) => coord[0]))) /
-    2;
-
-  let map_cy =
-    (Math.max(...activity.route.data.geometry.coordinates.map((coord) => coord[1])) +
-      Math.min(...activity.route.data.geometry.coordinates.map((coord) => coord[1]))) /
-    2;
-
   var map = new mapboxgl.Map({
     container: 'routeMap',
     style: 'mapbox://styles/mapbox/dark-v10',
-    center: [map_cx, map_cy], // starting position [lng, lat]
   });
 
   map.fitBounds([
@@ -82,22 +71,6 @@ export const viewRouteMap = (activity) => {
     map.addSource('contours', {
       type: 'vector',
       url: 'mapbox://mapbox.mapbox-terrain-v2',
-    });
-    map.addLayer({
-      id: 'contours',
-      type: 'line',
-      source: 'contours',
-      'source-layer': 'contour',
-      layout: {
-        // make layer visible by default
-        visibility: 'visible',
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
-      paint: {
-        'line-color': '#fff',
-        'line-width': 2,
-      },
     });
   });
 };
