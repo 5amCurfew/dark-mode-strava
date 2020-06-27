@@ -9,22 +9,27 @@ export const viewActivity = (activity) => {
     <div class="activity__details">
 
         <div class="activity__headlines">
+        
           <div class="activity__headline">
             <p class="activity__info-title">Distance</p>
             <p class="activity__info-text">${Math.round(activity.details.distance / 1000)}km</p>
           </div>
+
           <div class="activity__headline">
             <p class="activity__info-title">Avg. Speed</p>
             <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
           </div>
+
           <div class="activity__headline">
-            <p class="activity__info-title">Avg. Speed</p>
-            <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
+            <p class="activity__info-title">Max Speed</p>
+            <p class="activity__info-text">${Math.round((activity.details.max_speed * 60 * 60) / 1000)}km/h</p>
           </div>
+
           <div class="activity__headline">
-            <p class="activity__info-title">Avg. Speed</p>
-            <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
+            <p class="activity__info-title">Elevation</p>
+            <p class="activity__info-text">${Math.round(activity.details.total_elevation_gain)}m</p>
           </div>
+
         </div>
         <div id="routeMap" class="routeMap"></div>
     </div>`;

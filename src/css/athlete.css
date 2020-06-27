@@ -131,7 +131,6 @@ body {
 }
 .results__fig {
   flex: 0 0 5.5rem;
-  border-radius: 50%;
   overflow: hidden;
   height: 5.5rem;
   margin-right: 2rem;
