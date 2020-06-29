@@ -31,7 +31,33 @@ export const viewActivity = (activity) => {
           </div>
 
         </div>
+
         <div id="routeMap" class="routeMap"></div>
+
+        <div class="activity__headlines">
+        
+          <div class="activity__headline">
+            <p class="activity__info-title">Conditions</p>
+            <p class="activity__info-text">${activity.weather.conditions}</p>
+          </div>
+        
+          <div class="activity__headline">
+            <p class="activity__info-title">Temperature</p>
+            <p class="activity__info-text">${Math.round(activity.weather.maxt)}°C</p>
+          </div>
+
+          <div class="activity__headline">
+            <p class="activity__info-title">Wind Speed</p>
+            <p class="activity__info-text">${Math.round(activity.weather.wspd)}km/h</p>
+          </div>
+
+          <div class="activity__headline">
+            <p class="activity__info-title">Wind Direction</p>
+            <p class="activity__info-text">${Math.round(activity.weather.wdir)}</p>
+          </div>
+
+        </div>
+        
     </div>`;
 
   document.querySelector('.activity').insertAdjacentHTML('beforeend', markup);

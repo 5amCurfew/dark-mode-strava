@@ -44,7 +44,7 @@ export default class Athlete {
             distance: activity.distance,
             id: activity.id,
             type: activity.type,
-            startDate: activity.start_date,
+            startDate: activity.start_date_local,
             elapsedTime: activity.elapsed_time,
             movingTime: activity.moving_time,
           };

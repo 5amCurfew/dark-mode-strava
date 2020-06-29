@@ -38,29 +38,25 @@ export default class Activity {
   }
 
   async getWeather() {
-    const token = '';
+    const token = 'EZU1LUU59BKHGGDT8DMP74839';
 
     if (this.route) {
-      const date = this.details.start_date.split('T')[0];
+      const date = this.details.start_date.split('Z')[0];
       const start = this.details.start_latlng;
-      /*
+
       try {
         let res = await axios({
           method: 'get',
-          url: ``,
-          headers: {
-            accept: 'application/json',
-          },
+          url: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?&aggregateHours=24&startDateTime=${date}&endDateTime=${date}&unitGroup=metric&contentType=json&location=${start[0]},${start[1]}&key=${token}`,
         }).then((response) => {
-          return response.data;
+          return Object.values(response.data.locations)[0].values[0];
         });
-        console.log(res);
+        this.weather = res;
       } catch (error) {
         console.log(error);
       }
     } else {
       console.log('No Route');
-      */
     }
   }
 }
