@@ -22,9 +22,14 @@ export const viewActivities = (Athlete) => {
 };
 
 export const greetAthlete = (Athlete) => {
-  const markup = `
+  const header_left = `
     <img src=${Athlete.details.profile} alt="Logo" class="header__logo" />
-    <h5 class="athlete__name">Hello ${Athlete.details.name}</h4>
+    <h5 class="athlete__name">Hello ${Athlete.details.name}</h5>
   `;
-  document.querySelector('.header').insertAdjacentHTML('beforeend', markup);
+  document.querySelector('.header').insertAdjacentHTML('beforeend', header_left);
+
+  const header_right = `
+    <h5>5AMU3L</h5>
+  `;
+  document.querySelector('.header').insertAdjacentHTML('beforeend', header_right);
 };
