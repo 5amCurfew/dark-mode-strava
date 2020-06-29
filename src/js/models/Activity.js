@@ -36,4 +36,31 @@ export default class Activity {
       },
     };
   }
+
+  async getWeather() {
+    const token = '';
+
+    if (this.route) {
+      const date = this.details.start_date.split('T')[0];
+      const start = this.details.start_latlng;
+      /*
+      try {
+        let res = await axios({
+          method: 'get',
+          url: ``,
+          headers: {
+            accept: 'application/json',
+          },
+        }).then((response) => {
+          return response.data;
+        });
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log('No Route');
+      */
+    }
+  }
 }

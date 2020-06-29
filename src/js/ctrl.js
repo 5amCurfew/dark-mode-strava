@@ -40,6 +40,7 @@ const activityControl = async () => {
     try {
       await state.Activity.getActivityDetails(state.Athlete.__accessToken__);
       await state.Activity.getRoute();
+      await state.Activity.getWeather();
       console.log(state);
       viewActivity.clear();
       await viewActivity.viewActivity(state.Activity);
