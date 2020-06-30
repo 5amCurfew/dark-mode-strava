@@ -1,3 +1,11 @@
+export const greetAthlete = (Athlete) => {
+  const header_left = `
+    <img src=${Athlete.details.profile} alt="Logo" class="header__logo" />
+    <h5 class="athlete__name">Hello ${Athlete.details.name}</h5>
+  `;
+  document.querySelector('.header').insertAdjacentHTML('beforeend', header_left);
+};
+
 export const viewActivities = (Athlete) => {
   Athlete.activities.forEach((activity) => {
     const date = activity.startDate.split('T')[0];
@@ -21,15 +29,41 @@ export const viewActivities = (Athlete) => {
   });
 };
 
-export const greetAthlete = (Athlete) => {
-  const header_left = `
-    <img src=${Athlete.details.profile} alt="Logo" class="header__logo" />
-    <h5 class="athlete__name">Hello ${Athlete.details.name}</h5>
-  `;
-  document.querySelector('.header').insertAdjacentHTML('beforeend', header_left);
+export const viewCalendar = (Athlete) => {
+  const activeDays = Athlete.activities.map((act) => Date.parse(act.startDate));
+  var att = [
+    {
+      highlight: {
+        backgroundColor: 'orange',
+        borderWidth: '1px',
+        borderRadius: 0,
+      },
+      dates: activeDays,
+    },
+  ];
 
-  const header_right = `
-    <h5>5AMU3L</h5>
+  const markup = `
+    <div id="activeCalendar">
+      <v-calendar 
+      :attributes="att" 
+      :mode="mode" 
+      v-model="selectedDate" 
+      is-inline
+      is-dark
+      color="orange">
+      </v-calendar>
+    </div>
   `;
-  document.querySelector('.header').insertAdjacentHTML('beforeend', header_right);
+
+  document.querySelector('.header').insertAdjacentHTML('beforeend', markup);
+
+  new Vue({
+    el: '#activeCalendar',
+    data: {
+      // Data used by the date picker
+      mode: 'single',
+      selectedDate: Math.max(...activeDays),
+      att,
+    },
+  });
 };

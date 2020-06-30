@@ -94,7 +94,7 @@ export const viewRouteMap = (activity) => {
         'line-cap': 'round',
       },
       paint: {
-        'line-color': 'tomato',
+        'line-color': '#FE6F3A',
         'line-width': 3,
       },
     });

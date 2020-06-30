@@ -12,6 +12,8 @@ app.use(express.static(`${__dirname}/src`));
 // Expose dependencies to front-end modules
 app.use('/deps', express.static(`${__dirname}/node_modules/axios/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/mapbox-gl/dist/`));
+app.use('/deps', express.static(`${__dirname}/node_modules/vue/dist/`));
+app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
 
 app.get('/oauth2-redirect', (req, res) => {
   console.log(`${req.query} __authorised`);

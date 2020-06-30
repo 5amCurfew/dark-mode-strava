@@ -1,4 +1,4 @@
-import * as polyline from '../models/polyline.js';
+import * as polyline from './polyline.js';
 
 export default class Activity {
   constructor(id) {

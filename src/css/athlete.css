@@ -13,7 +13,7 @@ html {
   display: flex;
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: Sol;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   align-items: center;
   justify-content: center;
 }
@@ -26,8 +26,8 @@ html {
 body {
   font-weight: 200;
   line-height: 1.6;
-  color: #1a1a1d;
-  background-color: #1a1a1d;
+  color: #191919;
+  background-color: #191919;
   background-size: cover;
   min-height: calc(100vh - 2 * 4vw);
   width: 100%;
@@ -36,7 +36,7 @@ body {
 .container {
   width: 100%;
   margin: 1vw auto;
-  background-color: #1a1a1d;
+  background-color: #191919;
   border-radius: 6px;
   display: grid;
   grid-template-columns: 1.1fr 2fr;
@@ -59,7 +59,7 @@ body {
 .loader svg {
   height: 5.5rem;
   width: 5.5rem;
-  fill: tomato;
+  fill: #fe6f3a;
   transform-origin: 44% 50%;
   animation: rotate 1.5s infinite linear;
 }
@@ -76,7 +76,7 @@ body {
 .header {
   display: flex;
   flex-direction: column;
-  background-color: #1a1a1d;
+  background-color: #191919;
   align-items: center;
   padding: 1rem;
   height: 95vh;
@@ -96,6 +96,17 @@ body {
   color: white;
   font-size: 2rem;
 }
+.vc-rounded-lg {
+  border: 0px;
+}
+.vc-grid-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #191919;
+  color: white;
+  border: 0px solid #fc6100;
+}
 
 .results__container {
   height: 95vh;
@@ -103,7 +114,7 @@ body {
   border: 0.5px solid #fff;
 }
 .results__list {
-  background-color: #1a1a1d;
+  background-color: #191919;
   padding: 1rem;
 }
 .results__link:link {
@@ -111,20 +122,20 @@ body {
   align-items: center;
   padding: 1.5rem 3rem;
   transition: all 0.3s;
-  border: 1px solid #1a1a1d;
+  border: 1px solid #191919;
   text-decoration: none;
 }
 .results__link:hover {
-  background-color: #1a1a1d;
+  background-color: #191919;
   border-color: #fc6100;
   transform: translateY(-2px);
 }
 .results__link--active {
-  background-color: #1a1a1d;
-  border-color: #1a1a1d;
+  background-color: #191919;
+  border-color: #191919;
 }
 .results__link--highlight {
-  border-color: tomato;
+  border-color: #fe6f3a;
 }
 .results__fig {
   flex: 0 0 5.5rem;
@@ -167,17 +178,17 @@ body {
 .activity {
   display: flex;
   flex: 1;
-  background-color: #1a1a1d;
+  background-color: #191919;
 }
 .activity__details {
   flex: 1;
   padding: 2rem 2rem;
-  background-color: #1a1a1d;
+  background-color: #191919;
   color: #fff;
   align-items: center;
 }
 .activity__info-title {
-  color: tomato;
+  color: #fe6f3a;
   padding: 1rem;
   font-size: 1.5rem;
   text-align: center;
@@ -210,5 +221,5 @@ body {
 }
 .selected {
   border: 1px solid;
-  border-color: tomato;
+  border-color: #fe6f3a;
 }

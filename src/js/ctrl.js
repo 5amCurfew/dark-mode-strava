@@ -20,6 +20,7 @@ const athleteControl = async () => {
       await state.Athlete.getAthleteDetails();
       await state.Athlete.getActivities();
       viewAthlete.greetAthlete(state.Athlete);
+      viewAthlete.viewCalendar(state.Athlete);
       viewAthlete.viewActivities(state.Athlete);
     } catch (error) {
       console.log(error);
