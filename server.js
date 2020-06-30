@@ -9,6 +9,9 @@ const settings = {
 };
 
 app.use(express.static(`${__dirname}/src`));
+// Expose dependencies to front-end modules
+app.use('/deps', express.static(`${__dirname}/node_modules/axios/dist/`));
+app.use('/deps', express.static(`${__dirname}/node_modules/mapbox-gl/dist/`));
 
 app.get('/oauth2-redirect', (req, res) => {
   console.log(`${req.query} __authorised`);
@@ -24,5 +27,5 @@ app.get('/oauth2-redirect', (req, res) => {
 });
 
 app.listen(8080, () => {
-  console.log('server listening...');
+  console.log('server listening on port:8080');
 });
