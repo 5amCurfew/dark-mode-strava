@@ -1,7 +1,6 @@
 html {
   background-image: url(../img/index_bg3.png);
-  height: 100%;
-  width: 100%;
+  background-size: cover;
 }
 
 .button {
@@ -10,7 +9,7 @@ html {
   padding: 0.75rem 1.5rem;
   border: none;
   outline: none;
-  background-color: tomato;
+  background-color: #fe6f3a;
   color: white;
   font-family: inherit;
   font-size: 1.25em;
@@ -24,28 +23,28 @@ html {
 }
 .button:focus,
 .button:hover {
-  background-color: #ff7359;
-  box-shadow: 0 0 0 0.1875rem #1a1a1d, 0 0 0 0.375rem #ff7359;
+  background-color: #fe6f3a;
+  box-shadow: 0 0 0 0.1875rem #1a1a1d, 0 0 0 0.375rem #fe6f3a;
 }
 .button:active {
-  background-color: #f25e43;
-  box-shadow: 0 0 0 0.1875rem #f25e43, 0 0 0 0.375rem #f25e43;
+  background-color: #fe6f3a;
+  box-shadow: 0 0 0 0.1875rem #f25e43, 0 0 0 0.375rem #fe6f3a;
   -webkit-transition-duration: 75ms;
   transition-duration: 75ms;
 }
 .button.is-outlined {
-  border: 0.1875rem solid tomato;
+  border: 0.1875rem solid #fe6f3a;
   background-color: transparent;
-  color: tomato;
+  color: #fe6f3a;
 }
 .button.is-outlined:focus,
 .button.is-outlined:hover {
-  border-color: #ff7359;
-  color: #ff7359;
+  border-color: #fe6f3a;
+  color: #fe6f3a;
 }
 .button.is-outlined:active {
-  border-color: #f25e43;
-  color: #f25e43;
+  border-color: #fe6f3a;
+  color: #fe6f3a;
 }
 
 *,

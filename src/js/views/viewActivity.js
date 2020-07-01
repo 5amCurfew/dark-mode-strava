@@ -9,7 +9,6 @@ export const viewActivity = (activity) => {
     <div class="activity__details">
 
         <div class="activity__headlines">
-        
           <div class="activity__headline">
             <p class="activity__info-title">Distance</p>
             <p class="activity__info-text">${Math.round(activity.details.distance / 1000)}km</p>
@@ -29,38 +28,44 @@ export const viewActivity = (activity) => {
             <p class="activity__info-title">Elevation</p>
             <p class="activity__info-text">${Math.round(activity.details.total_elevation_gain)}m</p>
           </div>
-
         </div>
 
         <div id="routeMap" class="routeMap"></div>
 
-        <div class="activity__headlines">
-        
-          <div class="activity__headline">
-            <p class="activity__info-title">Conditions</p>
-            <p class="activity__info-text">${activity.weather.conditions}</p>
-          </div>
-        
-          <div class="activity__headline">
-            <p class="activity__info-title">Temperature</p>
-            <p class="activity__info-text">${Math.round(activity.weather.maxt)}°C</p>
+        <div class="other__headlines">
+          <div class="weather__headlines">
+          
+            <div class="weather__headline">
+              <p class="weather__info-title">Temp.</p>
+              <p class="weather__info-text">${Math.round(activity.weather.maxt)}°C</p>
+            </div>
+
+            <div class="weather__headline">
+              <p class="weather__info-title">Wind Speed</p>
+              <p class="weather__info-text">${Math.round(activity.weather.wspd)}km/h</p>
+            </div>
+
+            <div class="weather__headline">
+              <p class="weather__info-title">Wind Direction</p>
+              <p class="weather__info-text">${Math.round(activity.weather.wdir)}</p>
+            </div>
           </div>
 
-          <div class="activity__headline">
-            <p class="activity__info-title">Wind Speed</p>
-            <p class="activity__info-text">${Math.round(activity.weather.wspd)}km/h</p>
+          <div class="photo__container">
           </div>
-
-          <div class="activity__headline">
-            <p class="activity__info-title">Wind Direction</p>
-            <p class="activity__info-text">${Math.round(activity.weather.wdir)}</p>
-          </div>
-
         </div>
         
     </div>`;
 
+  let photoMarkup;
+  if (activity.details.photos.count > 0) {
+    photoMarkup = `<img src=${activity.details.photos.primary.urls[600]} class='activity__photo'>`;
+  } else {
+    photoMarkup = `<img src=${activity.details.profile} class='activity__photo'/>`;
+  }
+
   document.querySelector('.activity').insertAdjacentHTML('beforeend', markup);
+  document.querySelector('.photo__container').insertAdjacentHTML('beforeend', photoMarkup);
   document.querySelector(`.results__link[href*="${activity.id}"]`).parentElement.classList.add('selected');
 };
 
@@ -94,7 +99,7 @@ export const viewRouteMap = (activity) => {
         'line-cap': 'round',
       },
       paint: {
-        'line-color': '#FE6F3A',
+        'line-color': 'orange',
         'line-width': 3,
       },
     });
