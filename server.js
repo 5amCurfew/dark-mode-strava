@@ -17,16 +17,16 @@ app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
 
 app.get('/oauth2-redirect', (req, res) => {
   console.log(req.url);
-  console.log(req.headers);
   console.log(`${req.query} __authorised`);
   const auth_code = req.query.code;
+  const hostName = req.headers.host;
   axios({
     method: 'post',
     url: `https://www.strava.com/oauth/token?client_id=${settings.client_id}&client_secret=${settings.client_secret}&code=${auth_code}&grant_type=authorization_code`,
     headers: { accept: 'application/json' },
   }).then((response) => {
     const accessToken = response.data.access_token;
-    res.redirect(`/athlete.html?access_token=${accessToken}`);
+    return res.redirect(`http://${hostName}/athlete.html?access_token=${accessToken}`);
   });
 });
 
