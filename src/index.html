@@ -7,10 +7,15 @@
     <title>Strava API/Home</title>
   </head>
   <body style="height: 100%;">
-    <a
-      class="button"
-      href="https://www.strava.com/api/v3/oauth/authorize?response_type=code&client_id=49531&redirect_uri=http://localhost:8080/oauth2-redirect&scope=read,activity:read_all,profile:read_all,read_all&state=test"
-      >Login with Strava</a
-    >
+    <div class="loginContainer"></div>
+    <script>
+      const host = window.location;
+
+      const login = `
+      <a class="button" href="https://www.strava.com/api/v3/oauth/authorize?response_type=code&client_id=49531&redirect_uri=${host}oauth2-redirect&scope=read,activity:read_all,profile:read_all,read_all&state=test">Login with Strava</a>
+      `;
+
+      document.querySelector('.loginContainer').insertAdjacentHTML('beforeend', login);
+    </script>
   </body>
 </html>

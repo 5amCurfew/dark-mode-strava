@@ -19,14 +19,13 @@ app.get('/oauth2-redirect', (req, res) => {
   console.log(req.url);
   console.log(`${req.query} __authorised`);
   const auth_code = req.query.code;
-  const hostName = req.headers.referer;
   axios({
     method: 'post',
     url: `https://www.strava.com/oauth/token?client_id=${settings.client_id}&client_secret=${settings.client_secret}&code=${auth_code}&grant_type=authorization_code`,
     headers: { accept: 'application/json' },
   }).then((response) => {
     const accessToken = response.data.access_token;
-    return res.redirect(`${hostName}athlete.html?access_token=${accessToken}`);
+    return res.redirect(`/athlete.html?access_token=${accessToken}`);
   });
 });
 
