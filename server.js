@@ -17,6 +17,7 @@ app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
 
 app.get('/oauth2-redirect', (req, res) => {
   console.log(req.url);
+  console.log(req.headers);
   console.log(`${req.query} __authorised`);
   const auth_code = req.query.code;
   axios({
