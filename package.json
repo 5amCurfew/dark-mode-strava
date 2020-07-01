@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Strava API request server",
   "main": "server.js",
+  "engines": {
+    "node": "12.16.2"
+  },
   "scripts": {
-    "start": "nodemon server.js"
+    "dev-start": "nodemon server.js"
   },
   "author": "5AMU3L",
   "license": "ISC",

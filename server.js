@@ -28,6 +28,11 @@ app.get('/oauth2-redirect', (req, res) => {
   });
 });
 
-app.listen(8080, () => {
-  console.log('server listening on port:8080');
+// Heroku specifies port in .env (if running locally default to port:8080)
+let port = process.env.PORT;
+if (port == null || port == '') {
+  port = 8080;
+}
+app.listen(port, () => {
+  console.log(`server listening on port:${port}`);
 });
