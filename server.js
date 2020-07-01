@@ -16,6 +16,7 @@ app.use('/deps', express.static(`${__dirname}/node_modules/vue/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
 
 app.get('/oauth2-redirect', (req, res) => {
+  console.log(req.url);
   console.log(`${req.query} __authorised`);
   const auth_code = req.query.code;
   axios({
@@ -29,10 +30,7 @@ app.get('/oauth2-redirect', (req, res) => {
 });
 
 // Heroku specifies port in .env (if running locally default to port:8080)
-let port = process.env.PORT;
-if (port == null || port == '') {
-  port = 8080;
-}
-app.listen(port, () => {
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0', () => {
   console.log(`server listening on port:${port}`);
 });
