@@ -188,14 +188,13 @@ body {
 }
 .activity__details {
   flex: 1;
-  padding: 2rem 2rem;
   background-color: #191919;
   color: #fff;
   align-items: center;
 }
 .activity__info-title {
   color: #fe6f3a;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 1.5rem;
   text-align: center;
 }
@@ -206,11 +205,20 @@ body {
   color: #fff;
   text-align: center;
 }
+.activity__info-text2 {
+  font-size: 1.5rem;
+}
 .activity__headlines {
   display: flex;
   flex: 1;
   font-size: 1.5rem;
   justify-content: space-evenly;
+}
+.activity__headlines_min {
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+  margin: 1rem;
 }
 .other__headlines {
   display: flex;
@@ -223,15 +231,22 @@ body {
 }
 .activity__headline {
   display: inline-grid;
-  padding: 1rem;
   margin: 0.5rem;
+}
+.activity__headline2 {
+  display: flex;
+  flex: 1 1 0px;
+  margin: 0.5rem;
+  justify-content: space-evenly;
+}
+.bordered {
+  border: 1px solid orange;
 }
 .weather__headline {
   display: grid;
   grid-template-columns: 50% 50%;
   padding: 0.2rem;
   margin: 0.5rem;
-  border: 1px solid pink;
 }
 .weather__info-title {
   color: #fe6f3a;
@@ -254,7 +269,6 @@ body {
 .activity__photo {
   display: flex;
   flex: 1;
-  border: 1px solid pink;
   width: 100%;
   object-fit: cover;
 }
@@ -264,7 +278,6 @@ body {
 .routeMap {
   display: flex;
   justify-content: center;
-  margin: 1rem;
 }
 .mapboxgl-map {
   display: flex;

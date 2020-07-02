@@ -32,6 +32,27 @@ export const viewActivity = (activity) => {
 
         <div id="routeMap" class="routeMap"></div>
 
+        <div class="activity__headlines_min">
+          <div class="activity__headline2 bordered">
+            <p class="activity__info-text activity__info-text2">${activity.details.segment_efforts.length}</p>
+            <p class="activity__info-title">Segments</p>
+          </div>
+
+          <div class="activity__headline2 bordered">
+            <p class="activity__info-text activity__info-text2">${activity.details.pr_count}</p>
+            <p class="activity__info-title">PRs</p>
+          </div>
+
+          <div class="activity__headline2 bordered">
+            <p class="activity__info-text activity__info-text2">${Math.round(activity.details.calories)}</p>
+            <p class="activity__info-title">Calories</p>
+          </div>
+
+          <div class="activity__headline2 bordered">
+            <p class="activity__info-text activity__info-text2">${Math.round(activity.details.moving_time / 50)} mins</p>
+          </div>
+        </div>
+
         <div class="other__headlines">
           <div class="weather__headlines">
           
@@ -54,6 +75,8 @@ export const viewActivity = (activity) => {
           <div class="photo__container">
           </div>
         </div>
+
+        
         
     </div>`;
 
