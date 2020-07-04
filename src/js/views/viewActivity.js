@@ -6,49 +6,49 @@ export const viewActivity = (activity) => {
   });
 
   const markup = `
-    <div class="activity__details">
+    <div class="activity__details w3-animate-opacity">
 
-        <div class="activity__headlines">
+        <div class="activity__headlines fade_in">
           <div class="activity__headline">
             <p class="activity__info-title">Distance</p>
             <p class="activity__info-text">${Math.round(activity.details.distance / 1000)}km</p>
           </div>
 
-          <div class="activity__headline">
+          <div class="activity__headline fade_in">
             <p class="activity__info-title">Avg. Speed</p>
             <p class="activity__info-text">${Math.round((activity.details.average_speed * 60 * 60) / 1000)}km/h</p>
           </div>
 
-          <div class="activity__headline">
+          <div class="activity__headline fade_in">
             <p class="activity__info-title">Max Speed</p>
             <p class="activity__info-text">${Math.round((activity.details.max_speed * 60 * 60) / 1000)}km/h</p>
           </div>
 
-          <div class="activity__headline">
+          <div class="activity__headline fade_in">
             <p class="activity__info-title">Elevation</p>
             <p class="activity__info-text">${Math.round(activity.details.total_elevation_gain)}m</p>
           </div>
         </div>
 
-        <div id="routeMap" class="routeMap"></div>
+        <div id="routeMap" class="routeMap fade_in"></div>
 
         <div class="activity__headlines_min">
-          <div class="activity__headline2 bordered">
+          <div class="activity__headline2 bordered fade_in">
             <p class="activity__info-text activity__info-text2">${activity.details.segment_efforts.length}</p>
             <p class="activity__info-title">Segments</p>
           </div>
 
-          <div class="activity__headline2 bordered">
+          <div class="activity__headline2 bordered fade_in">
             <p class="activity__info-text activity__info-text2">${activity.details.pr_count}</p>
             <p class="activity__info-title">PRs</p>
           </div>
 
-          <div class="activity__headline2 bordered">
+          <div class="activity__headline2 bordered fade_in">
             <p class="activity__info-text activity__info-text2">${Math.round(activity.details.calories)}</p>
             <p class="activity__info-title">Calories</p>
           </div>
 
-          <div class="activity__headline2 bordered">
+          <div class="activity__headline2 bordered fade_in">
             <p class="activity__info-text activity__info-text2">${Math.round(activity.details.moving_time / 50)} mins</p>
           </div>
         </div>
@@ -56,17 +56,17 @@ export const viewActivity = (activity) => {
         <div class="other__headlines">
           <div class="weather__headlines">
           
-            <div class="weather__headline">
+            <div class="weather__headline fade_in">
               <p class="weather__info-title">Temp.</p>
               <p class="weather__info-text">${Math.round(activity.weather.maxt)}°C</p>
             </div>
 
-            <div class="weather__headline">
+            <div class="weather__headline fade_in">
               <p class="weather__info-title">Wind Speed</p>
               <p class="weather__info-text">${Math.round(activity.weather.wspd)}km/h</p>
             </div>
 
-            <div class="weather__headline">
+            <div class="weather__headline fade_in">
               <p class="weather__info-title">Wind Direction</p>
               <p class="weather__info-text">${Math.round(activity.weather.wdir)}</p>
             </div>
@@ -82,9 +82,9 @@ export const viewActivity = (activity) => {
 
   let photoMarkup;
   if (activity.details.photos.count > 0) {
-    photoMarkup = `<img src=${activity.details.photos.primary.urls[600]} class='activity__photo'>`;
+    photoMarkup = `<img src=${activity.details.photos.primary.urls[600]} class='activity__photo fade_in'>`;
   } else {
-    photoMarkup = `<img src=${activity.details.profile} class='activity__photo'/>`;
+    photoMarkup = `<img src="img/strava_logo.png" class='activity__photo fade_in'/>`;
   }
 
   document.querySelector('.activity').insertAdjacentHTML('beforeend', markup);
