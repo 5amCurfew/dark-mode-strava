@@ -75,8 +75,6 @@ export const viewActivity = (activity) => {
           <div class="photo__container">
           </div>
         </div>
-
-        
         
     </div>`;
 
@@ -92,8 +90,8 @@ export const viewActivity = (activity) => {
   document.querySelector(`.results__link[href*="${activity.id}"]`).parentElement.classList.add('selected');
 };
 
-export const viewRouteMap = (activity) => {
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg';
+export const viewRouteMap = (activity, mapboxToken) => {
+  mapboxgl.accessToken = mapboxToken;
 
   var map = new mapboxgl.Map({
     container: 'routeMap',

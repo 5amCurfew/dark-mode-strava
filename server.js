@@ -6,9 +6,18 @@ const settings = {
   client_id: '49531',
   client_secret: 'cbadaecd9d626826962ddde695f7067f52eb2da2',
   mapboxToken: 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg',
+  vcToken: 'EZU1LUU59BKHGGDT8DMP74839',
 };
 
+//const settings = {
+//  client_id: process.env.CLIENT_ID,
+//  client_secret: process.env.CLIENT_SECRET,
+//  mapboxToken: process.env.MAPBOX_TOKEN,
+//  vcToken: process.env.VISUAL_CROSSING_TOKEN,
+//};
+
 app.use(express.static(`${__dirname}/src`));
+app.use('/athlete', express.static(`${__dirname}/src/athlete.html`));
 // Expose dependencies to front-end modules
 app.use('/deps', express.static(`${__dirname}/node_modules/axios/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/mapbox-gl/dist/`));
@@ -25,7 +34,7 @@ app.get('/oauth2-redirect', (req, res) => {
     headers: { accept: 'application/json' },
   }).then((response) => {
     const accessToken = response.data.access_token;
-    return res.redirect(`/athlete.html?access_token=${accessToken}`);
+    return res.redirect(`/athlete?access_token=${accessToken}`);
   });
 });
 

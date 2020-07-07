@@ -37,9 +37,7 @@ export default class Activity {
     };
   }
 
-  async getWeather() {
-    const token = 'EZU1LUU59BKHGGDT8DMP74839';
-
+  async getWeather(vcToken) {
     if (this.route) {
       const date = this.details.start_date.split('Z')[0];
       const start = this.details.start_latlng;
@@ -47,7 +45,7 @@ export default class Activity {
       try {
         let res = await axios({
           method: 'get',
-          url: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?&aggregateHours=24&startDateTime=${date}&endDateTime=${date}&unitGroup=metric&contentType=json&location=${start[0]},${start[1]}&key=${token}`,
+          url: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/history?&aggregateHours=24&startDateTime=${date}&endDateTime=${date}&unitGroup=metric&contentType=json&location=${start[0]},${start[1]}&key=${vcToken}`,
         }).then((response) => {
           return Object.values(response.data.locations)[0].values[0];
         });

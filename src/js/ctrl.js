@@ -22,6 +22,7 @@ const athleteControl = async () => {
       viewAthlete.greetAthlete(state.Athlete);
       viewAthlete.viewCalendar(state.Athlete);
       viewAthlete.viewActivities(state.Athlete);
+      window.history.replaceState({}, document.title, '/' + 'athlete');
     } catch (error) {
       console.log(error);
       console.log('*** Athlete API call error ***');
@@ -41,11 +42,11 @@ const activityControl = async () => {
     try {
       await state.Activity.getActivityDetails(state.Athlete.__accessToken__);
       await state.Activity.getRoute();
-      await state.Activity.getWeather();
+      await state.Activity.getWeather('EZU1LUU59BKHGGDT8DMP74839');
       console.log(state);
       viewActivity.clear();
       await viewActivity.viewActivity(state.Activity);
-      await viewActivity.viewRouteMap(state.Activity);
+      await viewActivity.viewRouteMap(state.Activity, 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg');
     } catch (error) {
       console.log(error);
       console.log('*** Activity API call Error ***');
