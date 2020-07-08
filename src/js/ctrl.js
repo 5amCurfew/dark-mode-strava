@@ -9,11 +9,24 @@ import * as viewActivity from '/js/views/viewActivity.js';
 let state = {};
 window.state = state;
 
+let settings = {};
+const getSettings = async () => {
+  settings = await axios({
+    method: 'get',
+    url: `${window.location.origin}/settings`,
+    headers: { accept: 'application/json' },
+  }).then((response) => {
+    return response.data;
+  });
+};
+
 ///////////////////////////////////////////////
 // ATHLETE Control
 ///////////////////////////////////////////////
 const athleteControl = async () => {
+  await getSettings();
   const token = window.location.search.substring(1).split('access_token=')[1];
+  window.history.replaceState({}, document.title, '/' + 'athlete');
   if (token) {
     state.Athlete = new Athlete(token);
     try {
@@ -22,7 +35,6 @@ const athleteControl = async () => {
       viewAthlete.greetAthlete(state.Athlete);
       viewAthlete.viewCalendar(state.Athlete);
       viewAthlete.viewActivities(state.Athlete);
-      window.history.replaceState({}, document.title, '/' + 'athlete');
     } catch (error) {
       console.log(error);
       console.log('*** Athlete API call error ***');
@@ -42,11 +54,11 @@ const activityControl = async () => {
     try {
       await state.Activity.getActivityDetails(state.Athlete.__accessToken__);
       await state.Activity.getRoute();
-      await state.Activity.getWeather('EZU1LUU59BKHGGDT8DMP74839');
+      await state.Activity.getWeather(settings.visualCrossingToken);
       console.log(state);
       viewActivity.clear();
       await viewActivity.viewActivity(state.Activity);
-      await viewActivity.viewRouteMap(state.Activity, 'pk.eyJ1Ijoic2tzdHVkaW8iLCJhIjoiY2syMmF6cmp2MWg2eDNjbXY3am14ZzNlYyJ9.6o1_m77WQE0hY8orwGldUg');
+      await viewActivity.viewRouteMap(state.Activity, settings.mapboxToken);
     } catch (error) {
       console.log(error);
       console.log('*** Activity API call Error ***');
