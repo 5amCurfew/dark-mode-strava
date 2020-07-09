@@ -1,3 +1,5 @@
+import * as streams from '/js/views/viewStreams.js';
+
 export const viewActivity = (activity) => {
   const selectedList = Array.from(document.querySelectorAll('.selected'));
 
@@ -6,7 +8,7 @@ export const viewActivity = (activity) => {
   });
 
   const markup = `
-    <div class="activity__details w3-animate-opacity">
+    <div class="activity__details fade_in">
 
         <div class="activity__headlines fade_in">
           <div class="activity__headline">
@@ -53,40 +55,37 @@ export const viewActivity = (activity) => {
           </div>
         </div>
 
-        <div class="other__headlines">
-          <div class="weather__headlines">
-          
-            <div class="weather__headline fade_in">
-              <p class="weather__info-title">Temp.</p>
-              <p class="weather__info-text">${Math.round(activity.weather.maxt)}°C</p>
-            </div>
+        <div id="streams_plot" class="stream__container"></div>
 
-            <div class="weather__headline fade_in">
-              <p class="weather__info-title">Wind Speed</p>
-              <p class="weather__info-text">${Math.round(activity.weather.wspd)}km/h</p>
-            </div>
-
-            <div class="weather__headline fade_in">
-              <p class="weather__info-title">Wind Direction</p>
-              <p class="weather__info-text">${Math.round(activity.weather.wdir)}</p>
-            </div>
+        <div class="activity__headlines_min">
+          <div class="activity__headline2 bordered fade_in">
+            <p class="activity__info-text activity__info-text2">${Math.round(activity.weather.maxt)}°C</p>
+            <p class="activity__info-title">Temp.</p>
           </div>
 
-          <div class="photo__container">
+          <div class="activity__headline2 bordered fade_in">
+            <p class="activity__info-text activity__info-text2">${Math.round(activity.weather.wspd)}km/h</p>
+            <p class="activity__info-title">Wind Speed</p>
+          </div>
+
+          <div class="activity__headline2 bordered fade_in">
+            <p class="activity__info-text activity__info-text2">${Math.round(activity.weather.wdir)}°</p>
+            <p class="activity__info-title">Wind Direction</p>
           </div>
         </div>
         
+        </div>
     </div>`;
 
-  let photoMarkup;
-  if (activity.details.photos.count > 0) {
-    photoMarkup = `<img src=${activity.details.photos.primary.urls[600]} class='activity__photo fade_in'>`;
-  } else {
-    photoMarkup = `<img src="img/strava_logo.png" class='activity__photo fade_in'/>`;
-  }
+  //let photoMarkup;
+  //if (activity.details.photos.count > 0) {
+  //  photoMarkup = `<img src=${activity.details.photos.primary.urls[600]} class='activity__photo fade_in'>`;
+  //} else {
+  //  photoMarkup = `<img src="img/strava_logo.png" class='activity__photo fade_in'/>`;
+  //}
 
   document.querySelector('.activity').insertAdjacentHTML('beforeend', markup);
-  document.querySelector('.photo__container').insertAdjacentHTML('beforeend', photoMarkup);
+  streams.viewStreams(activity.streams.velocity_smooth, activity.streams.altitude, 'streams_plot');
   document.querySelector(`.results__link[href*="${activity.id}"]`).parentElement.classList.add('selected');
 };
 

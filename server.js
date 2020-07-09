@@ -14,6 +14,7 @@ app.use('/deps', express.static(`${__dirname}/node_modules/axios/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/mapbox-gl/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/vue/dist/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
+app.use('/deps', express.static(`${__dirname}/node_modules/d3/dist/`));
 
 app.get('/settings', (req, res) => {
   res.send(settings);

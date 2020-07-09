@@ -54,6 +54,7 @@ const activityControl = async () => {
     try {
       await state.Activity.getActivityDetails(state.Athlete.__accessToken__);
       await state.Activity.getRoute();
+      await state.Activity.getStreams(state.Athlete.__accessToken__);
       await state.Activity.getWeather(settings.visualCrossingToken);
       console.log(state);
       viewActivity.clear();
