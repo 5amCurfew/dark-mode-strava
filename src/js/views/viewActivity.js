@@ -55,7 +55,9 @@ export const viewActivity = (activity) => {
           </div>
         </div>
 
-        <div id="streams_plot" class="stream__container"></div>
+        <div class="stream__holder">
+          <div id="streams_plot" class="stream__container"></div>
+        </div>
 
         <div class="activity__headlines_min">
           <div class="activity__headline2 bordered fade_in">
