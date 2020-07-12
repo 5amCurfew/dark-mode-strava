@@ -1,6 +1,6 @@
 export const greetAthlete = (Athlete) => {
   const header_left = `
-    <img src=${Athlete.details.profile} alt="Logo" class="header__logo" />
+    <img src=${Athlete.details.profile} alt="Logo" class="header__logo fade_in" />
     <h5 class="athlete__name">Hello ${Athlete.details.name}</h5>
   `;
   document.querySelector('.header').insertAdjacentHTML('beforeend', header_left);
@@ -43,7 +43,7 @@ export const viewCalendar = (Athlete) => {
   ];
 
   const markup = `
-    <div id="activeCalendar">
+    <div id="activeCalendar" class="fade_in">
       <v-calendar 
       :attributes="att" 
       :mode="mode" 

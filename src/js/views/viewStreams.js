@@ -1,11 +1,32 @@
 export const viewStreams = (speed, elev, divLocation) => {
-  let i;
+  let i, rolling;
   let data = [];
 
+  let window = 100;
   for (i = 0; i < speed.data.length; i++) {
+    if (i == 0) {
+      rolling = 0;
+    } else {
+      if (i > window) {
+        rolling = Math.round(
+          speed.data.slice(i - window, i + 1).reduce((acc, cur) => {
+            return acc + (cur * 60 * 60) / 1000;
+          }, 0) /
+            (window + 1)
+        );
+      } else {
+        rolling = Math.round(
+          speed.data.slice(0, i + 1).reduce((acc, cur) => {
+            return acc + (cur * 60 * 60) / 1000;
+          }, 0) / i
+        );
+      }
+    }
+
     let d = {
       index: i,
       speed: Math.round((speed.data[i] * 60 * 60) / 1000),
+      rollingSpeed: rolling,
       elev: elev.data[i],
     };
     data.push(d);
@@ -62,6 +83,15 @@ export const viewStreams = (speed, elev, divLocation) => {
       return y(d.speed);
     });
 
+  var valueline2 = d3
+    .line()
+    .x(function (d) {
+      return x(d.index);
+    })
+    .y(function (d) {
+      return y(d.rollingSpeed);
+    });
+
   // define elevaiton valueline
   var valueArea = d3
     .area()
@@ -74,8 +104,16 @@ export const viewStreams = (speed, elev, divLocation) => {
     });
 
   // Add the elevation area + speed line
-  svg.append('path').data([data]).attr('class', 'area').attr('d', valueArea).attr('fill', '#2f2f2f').attr('stroke', '#eeeeee');
-  svg.append('path').data([data]).attr('class', 'line').attr('stroke', 'orange').attr('stroke-width', 1).attr('d', valueline);
+  svg.append('path').data([data]).attr('class', 'area').attr('d', valueArea).attr('fill', '#202020').attr('stroke', '#eeeeee');
+  svg.append('path').data([data]).attr('class', 'line').attr('stroke', '#434343').attr('stroke-width', 0.5).attr('d', valueline);
+  svg
+    .append('path')
+    .data([data])
+    .attr('class', 'line')
+    .attr('stroke', 'orange')
+    .attr('stroke-width', 1)
+    .attr('d', valueline2)
+    .style('stroke-dasharray', '10, 3');
 
   // Create the circle that travels along the curve of chart
   var focus = svg.append('g').append('circle').style('fill', 'none').attr('stroke', 'white').attr('r', 8.5).style('opacity', 0);
@@ -115,9 +153,11 @@ export const viewStreams = (speed, elev, divLocation) => {
     focus.attr('cx', x(selectedData.index)).attr('cy', y(selectedData.speed));
     focusText
       .html(`${selectedData.speed} km/h`)
-      .attr('x', x(selectedData.index) + 15)
-      .attr('y', y(selectedData.speed) + 10)
-      .attr('fill', 'white');
+      .attr('x', x(selectedData.index) + 10)
+      .attr('y', y(selectedData.speed) - 10)
+      .attr('fill', 'white')
+      .attr('font-size', '15')
+      .attr('font-family', 'Helvetica');
   }
   function mouseout() {
     focus.style('opacity', 0);

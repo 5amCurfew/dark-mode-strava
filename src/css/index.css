@@ -1,6 +1,6 @@
-html {
-  background-image: url(../img/index_bg3.png);
-  background-size: cover;
+html,
+body {
+  background-color: #191919;
 }
 
 .button {
