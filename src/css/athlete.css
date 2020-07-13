@@ -101,7 +101,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #191919;
+  background-color: transparent;
   color: white;
   border: 0px solid #fc6100;
 }
@@ -133,6 +133,12 @@ body {
   border-color: orange;
   transform: translateY(-2px);
 }
+.stats__holder {
+  display: inline-grid;
+  grid-template-columns: 30% 70%;
+  margin: 1rem;
+}
+
 .activity__headline:hover {
   border-bottom: 1px solid orange;
 }
@@ -162,11 +168,26 @@ body {
   object-fit: cover;
   transition: all 0.3s;
 }
+.stats__fig img {
+  display: block;
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  transition: all 0.3s;
+  margin: 1rem;
+}
 .results__name {
   font-size: 1.6rem;
   color: #f2f2f2;
   font-weight: 100;
   margin-bottom: 0.3rem;
+}
+.stats__name {
+  font-size: 1.6rem;
+  color: #f2f2f2;
+  font-weight: 100;
+  margin-bottom: 0.3rem;
+  text-align: center;
 }
 .results__km {
   font-size: 1.3rem;

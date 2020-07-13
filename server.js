@@ -17,7 +17,11 @@ app.use('/deps', express.static(`${__dirname}/node_modules/v-calendar/lib/`));
 app.use('/deps', express.static(`${__dirname}/node_modules/d3/dist/`));
 
 app.get('/settings', (req, res) => {
-  res.send(settings);
+  if (req.headers.skeleton == process.env.SKELETON) {
+    res.send(settings);
+  } else {
+    res.send('Not Authorised');
+  }
 });
 
 app.get('/oauth2-redirect', (req, res) => {

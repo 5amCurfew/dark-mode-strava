@@ -14,7 +14,7 @@ const getSettings = async () => {
   settings = await axios({
     method: 'get',
     url: `${window.location.origin}/settings`,
-    headers: { accept: 'application/json' },
+    headers: { accept: 'application/json', skeleton: '5AMU3L' },
   }).then((response) => {
     return response.data;
   });
@@ -31,8 +31,10 @@ const athleteControl = async () => {
     state.Athlete = new Athlete(token);
     try {
       await state.Athlete.getAthleteDetails();
+      await state.Athlete.getAthleteStats();
       await state.Athlete.getActivities();
       viewAthlete.greetAthlete(state.Athlete);
+      viewAthlete.viewStats(state.Athlete);
       viewAthlete.viewCalendar(state.Athlete);
       viewAthlete.viewActivities(state.Athlete);
     } catch (error) {

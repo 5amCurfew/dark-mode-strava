@@ -15,6 +15,7 @@ export default class Athlete {
         headers: { accept: 'application/json' },
       }).then((response) => {
         let details = {
+          id: response.data.id,
           name: response.data.firstname,
           profile: response.data.profile,
         };
@@ -22,6 +23,25 @@ export default class Athlete {
       });
 
       this.details = res;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  ///////////////////////////////////////////////
+  //// FETCH Athlete stats
+  ///////////////////////////////////////////////
+  async getAthleteStats() {
+    try {
+      let res = await axios({
+        method: 'get',
+        url: `https://www.strava.com/api/v3/athletes/${this.details.id}/stats?access_token=${this.__accessToken__}`,
+        headers: { accept: 'application/json' },
+      }).then((response) => {
+        return response.data;
+      });
+
+      this.stats = res;
     } catch (error) {
       console.log(error);
     }
