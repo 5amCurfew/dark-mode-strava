@@ -1,7 +1,7 @@
 export const greetAthlete = (Athlete) => {
   const header_left = `
     <img src=${Athlete.details.profile} alt="Logo" class="header__logo fade_in" />
-    <h5 class="athlete__name">Hello ${Athlete.details.name}</h5>
+    <h5 class="athlete__name fade_in">Hello ${Athlete.details.name}</h5>
   `;
   document.querySelector('.header').insertAdjacentHTML('beforeend', header_left);
 };
@@ -19,12 +19,12 @@ export const viewActivities = (Athlete) => {
       figSrc = 'img/run.png';
     }
     const markup = `
-        <li class="results__obj" style="--d:${0.2 * index}s">
+        <li class="results__obj fade_in" style="--d:${0.2 * index}s">
           <a class="results__link results__link--active" href="#${activity.id}">
-              <figure class="results__fig">
+              <figure class="results__fig fade_in">
                   <img src="${figSrc}" alt="Test">
               </figure>
-              <div class="results__data">
+              <div class="results__data fade_in">
                   <h4 class="results__name">${activity.title.replace(/->/g, '&rarr;')}</h4>
                   <p class="results__km">${Math.round(activity.distance / 1000)}km</p>
                   <p class="results__km">${time} on ${date}</p>
@@ -87,7 +87,7 @@ export const viewCalendar = (Athlete) => {
 
 const ride_ytd = (Athlete) => {
   let markup = `
-    <a class="stats__holder bordered">
+    <a class="stats__holder bordered fade_in">
     <div>
       <figure class="stats__fig">
           <img src="img/bicycle.png" alt="Test">
@@ -109,7 +109,7 @@ const ride_ytd = (Athlete) => {
 
 const run_ytd = (Athlete) => {
   let markup = `
-    <a class="stats__holder bordered">
+    <a class="stats__holder bordered fade_in">
     <div>
       <figure class="stats__fig">
           <img src="img/run.png" alt="Test">
@@ -128,7 +128,7 @@ const run_ytd = (Athlete) => {
 
 const swim_ytd = (Athlete) => {
   let markup = `
-    <a class="stats__holder bordered">
+    <a class="stats__holder bordered fade_in">
     <div>
       <figure class="stats__fig">
           <img src="img/swim.png" alt="Test">
@@ -140,7 +140,6 @@ const swim_ytd = (Athlete) => {
           0
         )} swims</span> in ${new Date().getFullYear()}</h4>
         <h4 class="stats__name"><span style="color:orange">Distance: </span>${Math.round(Athlete.stats.ytd_swim_totals.distance / 1000, 0)}km</h4>
-        <h4 class="stats__name"><span style="color:orange">Elevation: </span>${Math.round(Athlete.stats.ytd_swim_totals.elevation_gain, 0)}m</h4>
       </div>  
     </div>
   `;
