@@ -7,7 +7,7 @@ import * as viewAthlete from '/js/views/viewAthlete.js';
 import * as viewActivity from '/js/views/viewActivity.js';
 
 let state = {};
-window.state = state;
+//window.state = state;
 
 let settings = {};
 const getSettings = async () => {
@@ -58,7 +58,6 @@ const activityControl = async () => {
       await state.Activity.getRoute();
       await state.Activity.getStreams(state.Athlete.__accessToken__);
       await state.Activity.getWeather(settings.visualCrossingToken);
-      console.log(state);
       viewActivity.clear();
       await viewActivity.viewActivity(state.Activity);
       await viewActivity.viewRouteMap(state.Activity, settings.mapboxToken);

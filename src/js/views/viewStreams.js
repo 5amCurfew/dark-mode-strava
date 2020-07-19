@@ -31,7 +31,6 @@ export const viewStreams = (speed, elev, divLocation) => {
     };
     data.push(d);
   }
-  console.log(data);
 
   var margin = { top: 10, left: 20 },
     width = document.getElementById(divLocation).clientWidth - margin.left * 2,
@@ -144,11 +143,8 @@ export const viewStreams = (speed, elev, divLocation) => {
   function mousemove() {
     // recover coordinate we need
     var x0 = x.invert(d3.mouse(this)[0]);
-    console.log(x0);
     var i = bisect(data, x0, 1);
-    console.log(i);
     let selectedData = data[i];
-    console.log(selectedData);
 
     focus.attr('cx', x(selectedData.index)).attr('cy', y(selectedData.speed));
     focusText

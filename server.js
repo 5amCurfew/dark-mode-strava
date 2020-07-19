@@ -25,7 +25,6 @@ app.get('/settings', (req, res) => {
 });
 
 app.get('/oauth2-redirect', (req, res) => {
-  console.log(req.url);
   console.log(`${req.query} __authorised`);
   const auth_code = req.query.code;
   axios({
