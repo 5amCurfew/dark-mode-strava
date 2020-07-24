@@ -19,7 +19,7 @@ export const viewActivities = (Athlete) => {
       figSrc = 'img/run.png';
     }
     const markup = `
-        <li class="results__obj fade_in" style="--d:${0.2 * index}s">
+        <li class="results__obj" style="--d:${0.2 * index}s">
           <a class="results__link results__link--active" href="#${activity.id}">
               <figure class="results__fig fade_in">
                   <img src="${figSrc}" alt="Test">
