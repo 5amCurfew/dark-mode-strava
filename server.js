@@ -8,6 +8,8 @@ const settings = {
 };
 
 app.use('/deps', express.static(`${__dirname}/node_modules/mapbox-gl/dist/`));
+app.use('/deps', express.static(`${__dirname}/node_modules/axios/dist/`));
+
 app.use(express.static(`${__dirname}/src`));
 app.use('/athlete', express.static(`${__dirname}/src/athlete.html`));
 // Expose dependencies to front-end modules
